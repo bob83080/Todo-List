@@ -5,6 +5,10 @@ const todoSchema = Schema({
   name: {
     type: String,
     required: true
+  },
+  isDone: {
+    type: Boolean,
+    default: false
   }
 })
 
