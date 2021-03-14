@@ -5,6 +5,9 @@ const bodyPraser = require('body-parser')
 const methodOverride = require('method-override')
 
 const routes = require('./routes')
+
+const usePassport = require('./config/passport')
+const { use } = require('./routes')
 require('./config/mongoose')
 
 const app = express()
@@ -18,6 +21,9 @@ app.use(session({
 }))
 app.use(bodyPraser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
+usePassport(app)
+
 app.use(routes)
 
 app.listen(3000, () => {
